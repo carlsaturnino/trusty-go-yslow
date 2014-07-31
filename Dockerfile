@@ -6,6 +6,8 @@ MAINTAINER Carl Saturnino <cosaturn@gmail.com>
 ENV PHANTOMJS_VERSION 1.9.7
 ENV YSLOW_VERSION 3.1.8
 
+RUN apt-get -qy install wget curl unzip
+
 # PhantomJS
 RUN wget --no-check-certificate -O /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2
 RUN tar -xjf /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C /tmp
@@ -14,7 +16,6 @@ RUN mv /tmp/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/ /srv/var/phantomjs
 RUN ln -s /srv/var/phantomjs/bin/phantomjs /usr/bin/phantomjs
 
 # YSLOW
-RUN apt-get -qy install curl unzip
 RUN curl -k -O http://yslow.org/yslow-phantomjs-$YSLOW_VERSION.zip
 RUN unzip yslow-phantomjs-$YSLOW_VERSION.zip -d yslow-phantomjs-$YSLOW_VERSION && rm yslow-phantomjs-$YSLOW_VERSION.zip
 RUN mv yslow-phantomjs-$YSLOW_VERSION /opt/yslow-phantomjs-$YSLOW_VERSION
