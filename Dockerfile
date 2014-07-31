@@ -1,5 +1,5 @@
 # DOCKER-VERSION 1.1.1
-FROM carlsaturnino:trusty-go
+FROM carlsaturnino/trusty-go
 MAINTAINER Carl Saturnino <cosaturn@gmail.com>
 
 # Env
